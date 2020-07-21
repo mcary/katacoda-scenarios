@@ -1,5 +1,5 @@
 {
-  "title": "First Scenario (simplified)",
+  "title": "First Scenario (no pg)",
   "description": "Just trying to get the hang of this thing...",
   "difficulty": "Beginner",
   "time": "30 minutes",
@@ -26,7 +26,7 @@
     }
   },
   "environment": {
-    "uilayout": "terminal"
+    "uilayout": "editor-terminal"
   },
   "backend": {
     "imageid": "ruby"
