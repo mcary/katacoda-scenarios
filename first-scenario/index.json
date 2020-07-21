@@ -1,5 +1,5 @@
 {
-  "title": "First Scenario",
+  "title": "First Scenario (simplified)",
   "description": "Just trying to get the hang of this thing...",
   "difficulty": "Beginner",
   "time": "30 minutes",
@@ -26,9 +26,9 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "ruby-postgres"
+    "imageid": "ruby"
   }
 }
