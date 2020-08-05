@@ -25,3 +25,23 @@ This command will download the ubuntu:18.04 image if not present already, which 
 At the end, it should output:
 
 > Hello World!
+
+## Detecting whether we are running in a container
+
+When trying to escape a container, it is first useful to know whether we're running inside of one.  To determine that, run this command:
+
+```
+cat /proc/1/cgroup
+```{{execute}}
+
+Notice the cgroup paths are "/".  This indicates we're not running inside of a
+container.
+
+By contrast, run the same command under docker:
+
+```
+docker run -it ubuntu:18.04 cat /proc/1/cgroup
+```{{execute}}
+
+The paths will have the form "/docker/..........".  This reveals that we are running inside a container.
+
