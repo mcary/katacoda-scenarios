@@ -1,6 +1,6 @@
 ## Run a privileged container
 
-Now that we can run containers, let's run a _privileged_ container.  A privileged container has root privileges on the host, but it still runs inside it's own filesystem.
+Now that we can run containers, let's run a _privileged_ container.  A privileged container has root privileges on the host, but it still runs inside it's own filesystem namespace, pid namespace, and other namespaces.
 
 Add "--privileged" to the "Hello World" command above to run it in priviledged
 mode:

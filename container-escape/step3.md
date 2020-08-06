@@ -1,13 +1,13 @@
-## Escaping via cgroups _agent
+## Escaping via cgroups release_agent
 
 When inside of a container running in privileged mode (as determined in steps 1-2) we can escape using the release_agent feature of cgroups.
 
 ### Start a privileged container
 
-First, start an interactive shell inside a privileged container.  The remainder of the commands in this step will run inside the container, except for the last one.
+First, start an interactive shell inside a privileged container.  The remainder of the commands in this step will run inside the container.
 
 ```
-docker run -it ubuntu:18.04 bash
+docker run -it --privileged ubuntu:18.04 bash
 ```{{execute}}
 
 ### Mount cgroups inside the container
@@ -41,11 +41,7 @@ EOF
 chmod a+x /cmd
 ```{{execute}}
 
-The output is sent to the container's "/output" file, so that we can see it from within the container:
-
-```
-cat /output
-```{{execute}}
+The output is sent to the container's "/output" file, so that we can see it from within the container.
 
 ### Run a process in the cgroup to trigger the release_agent
 
