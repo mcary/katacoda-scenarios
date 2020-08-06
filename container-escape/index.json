@@ -2,7 +2,7 @@
   "title": "How to Escape a Privileged Docker Container",
   "description": "Demonstrates how to escape a privileged docker container to run arbitrary commands on the host",
   "difficulty": "Intermediate",
-  "time": "60 minutes",
+  "time": "30 minutes",
   "details": {
     "steps": [
       {
