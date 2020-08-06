@@ -15,7 +15,7 @@ docker run -it ubuntu:18.04 bash
 Next, we mount the cgroups filesystem within the container so that we can manipulate it:
 
 ```
-mkdir /tmp/cgrp && mount -t cgroup -o rdma cgroup /tmp/cgrp
+mkdir /tmp/cgrp && mount -t cgroup -o memory cgroup /tmp/cgrp
 ```{{execute}}
 
 ### Create a cgroup with crafted release_agent
@@ -62,3 +62,15 @@ Inspect the output:
 ```
 cat /output
 ```{{execute}}
+
+To see how different that output is from running "ps" inside the container, run "ps" inside the container:
+
+```
+ps aux
+```{{execute}}
+
+### Try another command...
+
+Now try modifying the command ("ps aux") inside of "/cmd" to run something
+else.  Can you overwrite a binary, install an authorized_keys entry for root,
+or add a .bashrc for root?
