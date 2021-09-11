@@ -1,0 +1,31 @@
+{
+  "title": "Install AWX",
+  "description": "Get a temporary AWX instance running so you can poke at it",
+  "difficulty": "Beginner",
+  "time": "10 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2",
+        "text": "step2.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "foreground": "foreground.sh"
+    },
+    "assets": {
+      "client": [ {"file": "install-awx.sh", "target": "/root/", "chmod": "+x"} ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal"
+  },
+  "backend": {
+    "imageid": "ubuntu:2004"
+  }
+}
