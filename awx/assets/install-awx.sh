@@ -1,56 +1,79 @@
 #!/bin/sh
 #
-# Install AWX using the docker-compose method, ideal for development.
+# Install AWX using the AWX Operator method, hopefully faster than
+# docker-compose method, which is for development and runs out of disk
+# space in Katacoda
 
 set -xe
 
-# Install prereqs:
-time python3 -m pip install docker-compose
-# Docker is already installed.
-# Ansible is already installed.
+# Ensure kubernetes is responding
+while ! kubectl get nodes,pods -A; do
+  echo "Communication failed, waiting a sec..."
+  sleep 1
+done
 
-# Download source for AWX
 release=19.3.0 # https://github.com/ansible/awx/releases/
-time git clone -b "$release" https://github.com/ansible/awx.git
-cd awx
-git checkout "$release" # Avoid leaving the git HEAD detached
+operator_release=0.13.0 # https://github.com/ansible/awx-operator/releases/
+time kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/"$operator_release"/deploy/awx-operator.yaml
 
-# Configure to pull from quay.io rather than build from scratch?
-sed -i.orig '/awx_image=/s/^# //' tools/docker-compose/inventory
-git diff | cat # Avoid hanging on the pager (less)
+time kubectl rollout status deployment/awx-operator
 
-# Build AWX
-time make docker-compose-build
+# Create a PV to meet the expectations of postgres, since we don't have any
+# dynamic storage classes already setup, and awx-operator creates
+# postgres's pvc with a "" storage class.
+cat > awx-pv.yml <<EOF
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+  labels:
+    type: local
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/srv"
+EOF
 
-# Fails at:
-#    => [stage-1 15/30] RUN ln -s /var/lib/awx/venv/awx/bin/awx-manage /usr/bin/awx-manage    41.6s
-#    => [stage-1 16/30] COPY --from=quay.io/project-receptor/receptor:1.0.0a2 /usr/bin/recep  47.3s
-#    => [stage-1 17/30] RUN openssl req -nodes -newkey rsa:2048 -keyout /etc/nginx/nginx.key  46.9s
-#    => [stage-1 18/30] ADD tools/ansible/roles/dockerfile/files/rsyslog.conf /var/lib/awx/r  41.8s
-#    => [stage-1 19/30] ADD tools/ansible/roles/dockerfile/files/wait-for-migrations /usr/lo  27.6s
-#    => [stage-1 20/30] ADD tools/docker-compose/launch_awx.sh /usr/bin/launch_awx.sh         35.9s
-#    => [stage-1 21/30] ADD tools/docker-compose/nginx.conf /etc/nginx/nginx.conf             34.9s
-#    => [stage-1 22/30] ADD tools/docker-compose/nginx.vh.default.conf /etc/nginx/conf.d/ngi  33.1s
-#    => ERROR [stage-1 23/30] ADD tools/docker-compose/start_tests.sh /start_tests.sh         30.6s
-#   ------
-#    > importing cache manifest from quay.io/awx/awx_devel:HEAD:
-#   ------
-#   ------
-#    > [stage-1 23/30] ADD tools/docker-compose/start_tests.sh /start_tests.sh:
-#   ------
-#   failed to solve with frontend dockerfile.v0: failed to build LLB: failed to prepare ymh8fbgab0br0jsle0dxo0rhk: no space left on device
-#   make: *** [Makefile:521: docker-compose-build] Error 1
-#   Command exited with non-zero status 2
-#   16.08user 7.17system 20:02.55elapsed 1%CPU (0avgtext+0avgdata 63760maxresident)k
-#   197496inputs+6888outputs (2022major+195480minor)pagefaults 0swaps
+kubectl apply -f awx-pv.yml
 
+cat > awx-demo.yml <<EOF
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx-demo
+spec:
+  service_type: NodePort
+  ingress_type: none
+  hostname: awx-demo.example.com
+  # Reduce requirements by 75% to fit into 2CPU/4GB RAM with room for
+  # other services to run.
+  web_resource_requirements:
+    requests:
+      cpu: "0.75"
+      memory: "1.5Gi"
+  task_resource_requirements:
+    requests:
+      cpu: "0.384"
+      memory: "0.75Gi"
+  ee_resource_requirements:
+    requests:
+      cpu: "0.384"
+      memory: "0.75Gi"
+EOF
 
-# Start AWX
-# "-d" means run in the background
-time make docker-compose COMPOSE_UP_OPTS=-d
+kubectl apply -f awx-demo.yml
 
-# Build UI
-time docker exec tools_awx_1 make clean-ui ui-devel
+echo For diagnostic info:
+echo "    "kubectl logs -f deployments/awx-operator
 
-# Load demo data
-docker exec tools_awx_1 awx-manage create_preload_data
+time kubectl wait awx/awx-demo --for condition=running
+while ! time kubectl rollout status deployment/awx-demo; do
+  echo "Waiting for deployment to exist so we can wait for it to be ready"
+  sleep 2
+done
+
+kubectl get pods,svc -l "app.kubernetes.io/managed-by=awx-operator"
