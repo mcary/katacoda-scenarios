@@ -16,7 +16,8 @@
       "text": "finish.md"
     },
     "assets": {
-      "client": [ {"file": "hello-world", "target": "/root/", "chmod": "+x"} ]
+      "client": [ {"file": "hello-world", "target": "/root/", "chmod": "+x"} ],
+      "node01": [ {"file": "hello-world", "target": "/root/", "chmod": "+x"} ]
     }
   },
   "environment": {
