@@ -1,0 +1,43 @@
+{
+    "icon": "fa-rails",
+    "title": "Rails Sandbox",
+    "description": "Explore Ruby on Rails in a sandboxed environment",
+    "authenticated": false,
+    "details": {
+        "steps": [
+            {
+                "title": "Ruby on Rails",
+                "text": "step1.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md"
+        },
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "environment": {
+        "hideintro": false,
+        "hidefinish": false,
+        "hidesidebar": false,
+        "uilayout": "vscode-terminal-split",
+        "uimessage1": "\u001b[32mWelcome to your interactive terminal.\u001b[m\r\n",
+        "uieditorpath": "/root/example-app",
+        "showdashboard": true,
+        "terminals": [
+          {
+            "name": "rails server"
+          }
+        ],
+        "dashboards": [
+          {
+            "name": "Your Web App",
+            "port": 3000
+          }
+        ]
+    },
+    "backend": {
+        "imageid": "ruby:3.2"
+    }
+}
