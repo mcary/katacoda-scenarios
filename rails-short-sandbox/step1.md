@@ -1,42 +1,19 @@
-This host comes with Ruby pre-installed via RVM:
-```
-which ruby
-ruby --version
-```{{execute}}
+Once rails installation is completed:
 
-Let's get started with Ruby on Rails:
-
-1. Install Rails:
-   ```
-   gem install rails --no-document
-   ```{{execute T1}}
-   The `--no-document` skips a documentation build process that would be
-   useful if you couldn't look up API docs in a browser.
-  
-   _[editorial note: This should take about 10 seconds.]_
-
-2. Install standard timezone data that is not already available on this
-   host:
-   ```
-   apt-get update -q &&
-     DEBIAN_FRONTEND=noninteractive apt-get install -yq tzdata
-   ```{{execute T1}}
-   _[editorial note: This should take about 6 seconds.]_
-
-3. Generate an app directory:
+1. Generate an app directory:
    ```
    rails new example-app
    ```{{execute T1}}
    _[editorial note: This should take about 25 seconds.]_
 
-4. Commit your baseline app directory:
+2. Commit your baseline app directory:
    ```
    cd example-app
    git add .
    git commit -m 'Pristine Rails application'
    ```{{execute T1}}
 
-5. Start your rails dev server in a new terminal tab:
+3. Start your rails dev server in a new terminal tab:
 
    <!--
    Let's run this in a 2nd terminal.
@@ -70,7 +47,7 @@ Let's get started with Ruby on Rails:
    (In many development environments, just a simple `rails console` would
    suffice.)
 
-6. View your sample web application by clicking the "Your Web App" tab, or
+4. View your sample web application by clicking the "Your Web App" tab, or
    open [your development server][dev-server] in a new browser tab.
 
    You should see a placeholder page with a Rails logo.
