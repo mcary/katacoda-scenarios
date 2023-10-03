@@ -1,65 +1,45 @@
 {
-  "icon": "fa-rails",
-  "title": "Rails Sandbox",
-  "description": "Explore Ruby on Rails in a sandboxed environment",
-  "authenticated": false,
-  "privage": false,
-  "details": {
-    "steps": [
-      {
-        "title": "Ruby on Rails",
-        "foreground": "foreground.sh",
-        "background": "background.sh",
-        "text": "step1.md",
-        "courseData": "background.sh",
-        "code": "foreground.sh"
-      }
-    ],
-    "intro": {
-      "text": "intro.md"
+    "icon": "fa-rails",
+    "title": "Rails Sandbox",
+    "description": "Explore Ruby on Rails in a sandboxed environment",
+    "authenticated": false,
+    "details": {
+        "steps": [
+            {
+                "title": "Ruby on Rails",
+                "foreground": "foreground.sh",
+                "background": "background.sh",
+                "text": "step1.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md"
+        },
+        "finish": {
+            "text": "finish.md"
+        }
     },
-    "finish": {
-      "text": "finish.md"
+    "environment": {
+        "hideintro": false,
+        "hidefinish": false,
+        "hidesidebar": false,
+        "uilayout": "vscode-terminal-split",
+        "uimessage1": "\u001b[32mWelcome to your interactive terminal.\u001b[m\r\n",
+        "uieditorpath": "/root/example-app",
+        "showdashboard": true,
+        "terminals": [
+          {
+            "name": "rails server"
+          }
+        ],
+        "dashboards": [
+          {
+            "name": "Your Web App",
+            "port": 3000
+          }
+        ]
+    },
+    "backend": {
+        "imageid": "ruby:3.2"
     }
-  },
-  "environment": {
-    "hideintro": false,
-    "hidefinish": false,
-    "hidesidebar": false,
-    "uilayout": "vscode-terminal-split-v1",
-    "uimessage1": "\u001b[32mWelcome to your interactive terminal.\u001b[m\r\n",
-    "uieditorpath": "/root/example-app",
-    "showdashboard": true,
-    "terminals": [
-      {
-        "name": "rails server"
-      }
-    ],
-    "dashboards": [
-    ],
-    "uidependencies": [
-      "/socket.io/socket.io.js",
-      "/javascripts/term.js",
-      "/javascripts/terminal-application.js"
-    ]
-  },
-  "backend": {
-    "imageid": "ruby:3.2",
-    "dockerimage": "ruby:3.2",
-    "backendTarget": "server"
-  },
-  "gitBased": true,
-  "id": "rails-sandbox",
-  "pathwayTitle": "mcary",
-  "pathwayId": "mcary",
-  "error": [],
-  "live": true,
-  "katacoda": {
-    "featureFlags": {
-      "scripts": "v2"
-    }
-  },
-  "lastUpdated": "2023-09-28T23:11:43.093Z",
-  "gitCommit": "5a4dc1cf017b9d9afbf47cb46d4cc0d2b7fd4c6a",
-  "gitRepo": "https://github.com/mcary/katacoda-scenarios"
 }
