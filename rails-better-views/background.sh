@@ -20,4 +20,14 @@ gem install rails --no-document  # ~10 sec
 apt-get update -q
 DEBIAN_FRONTEND=noninteractive apt-get install -yq tzdata  # ~6 sec
 
+rails new example-app # ~25 sec
+
+cd example-app
+git add .
+git commit -m 'Pristine Rails application'
+
+rails db:migrate &&
+  git add db/ &&
+  git commit -m 'Generate initial schema'
+
 echo "Rails is installed!"
