@@ -1,19 +1,6 @@
-Once rails installation is completed:
+A rails app has already been generated in `./example-app/`.
 
-1. Generate an app directory:
-   ```
-   rails new example-app
-   ```{{execute T1}}
-   _[editorial note: This should take about 25 seconds.]_
-
-2. Commit your baseline app directory:
-   ```
-   cd example-app
-   git add .
-   git commit -m 'Pristine Rails application'
-   ```{{execute T1}}
-
-3. Start your rails dev server in a new terminal tab:
+1. Start your rails dev server in a new terminal tab:
 
    <!--
    Let's run this in a 2nd terminal.
@@ -29,9 +16,9 @@ Once rails installation is completed:
    ```
    exec bash -l
    export RAILS_DEVELOPMENT_HOSTS='[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com'
-   cd example-app &&
-     rails server -b 0.0.0.0
-   ```{{execute T2}}
+   cd example-app
+   rails server -b 0.0.0.0
+   ```{{execute T2 interrupt}}
    <!--
    * The `-b 0.0.0.0` tells the development servers to accept outside
      connections.  This is necessary in this environment and may be needed
@@ -47,7 +34,7 @@ Once rails installation is completed:
    (In many development environments, just a simple `rails console` would
    suffice.)
 
-4. View your sample web application by clicking the "Your Web App" tab, or
+2. View your sample web application by clicking the "Your Web App" tab, or
    open [your development server][dev-server] in a new browser tab.
 
    You should see a placeholder page with a Rails logo.
