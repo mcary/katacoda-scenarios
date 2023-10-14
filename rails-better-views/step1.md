@@ -1,7 +1,7 @@
 First, let's generate a plain Rails scaffold to serve as a baseline for our
 explorations.
 
-Once rails installation is completed:
+A rails app has already been generated in `./example-app/`.
 
 1. Start your rails dev server in a new terminal tab:
    ```

@@ -8,7 +8,6 @@
             {
                 "title": "Ruby on Rails",
                 "foreground": "foreground.sh",
-                "background": "background.sh",
                 "text": "step1.md"
             }
         ],
@@ -40,6 +39,6 @@
         ]
     },
     "backend": {
-        "imageid": "ruby:3.2"
+        "imageid": "rails:7.1"
     }
 }
