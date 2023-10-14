@@ -13,6 +13,10 @@
             {
                 "title": "Add Bootstrap",
                 "text": "step2.md"
+            },
+            {
+                "title": "Add Bootstrap to Post Listing",
+                "text": "step3.md"
             }
         ],
         "intro": {
