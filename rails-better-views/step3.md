@@ -5,14 +5,14 @@ Next we'll enhance the Post listing itself by applying the Bootstrap
    and review the `div` and `p` tag markup that is already there.
 
    The `render post` call renders the post partial in
-   `app/views/posts/_post.html.erb`.
+   `app/views/posts/_post.html.erb`{{open}}.
 
    We'll want to be sure to keep the `notice` up top and the "New post"
    link at the bottom.
 
 2. Replace the middle stanza with a Bootstrap-styled table:
 
-   <pre class="file" data-filename="app/views/posts/index.html.erb" data-marker='<div id="posts">
+   <pre class="file" data-filename="app/views/posts/index.html.erb" data-target="insert" data-marker='<div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
@@ -20,24 +20,24 @@ Next we'll enhance the Post listing itself by applying the Bootstrap
     </p>
   <% end %>
 </div>'>
-     &lt;table class="table table-hover table-striped table-bordered table-responsive">
-       &lt;thead>
-         &lt;tr>
-           &lt;th scope="col">#&lt;/th>
-           &lt;th scope="col">Ttile&lt;/th>
-           &lt;th scope="col">Body&lt;/th>
+   &lt;table class="table table-hover table-striped table-bordered table-responsive">
+     &lt;thead>
+       &lt;tr>
+         &lt;th scope="col">#&lt;/th>
+         &lt;th scope="col">Title&lt;/th>
+         &lt;th scope="col">Body&lt;/th>
+       &lt;/tr>
+     &lt;/thead>
+     &lt;tbody>
+       &lt;% @posts.each do |post| %>
+         &lt;tr id="&lt;%= dom_id post %>">
+           &lt;th scope="row">&lt;%= link_to post.id, post %>&lt;/th>
+           &lt;td>&lt;%= post.title %>&lt;/td>
+           &lt;td>&lt;%= post.body %>&lt;/td>
          &lt;/tr>
-       &lt;/thead>
-       &lt;tbody>
-         &lt;% @posts.each do |post| %>
-           &lt;tr id="&lt;%= dom_id post %>">
-             &lt;th scope="row">&lt;%= link_to post.id, post %>&lt;/th>
-             &lt;td>&lt;%= post.title %>&lt;/td>
-             &lt;td>&lt;%= post.body %>&lt;/td>
-           &lt;/tr>
-         &lt;% end %>
-       &lt;/tbody>
-     &lt;/table>
+       &lt;% end %>
+     &lt;/tbody>
+   &lt;/table>
    </pre>
 
    Visit the [Post listing][posts] to see the table.
@@ -60,7 +60,7 @@ Next we'll enhance the Post listing itself by applying the Bootstrap
    style it as the _primary_ button, which is a queue to the user that is
    is the most common or default action to take.
 
-   <pre class="file" data-filename="app/views/posts/index.html.erb" data-marker='<%= link_to "New post", new_post_path %>'>
+   <pre class="file" data-filename="app/views/posts/index.html.erb" data-target="insert" data-marker='<%= link_to "New post", new_post_path %>'>
      <%= link_to "New post", new_post_path, class: "btn btn-primary" %>
    </pre>
 
