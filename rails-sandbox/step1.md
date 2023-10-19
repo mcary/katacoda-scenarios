@@ -45,12 +45,16 @@ Let's get started with Ruby on Rails:
    echo "Warm up 2nd terminal."
    ```{{execute T2}}
    Wait for the terminal prompt to appear, then proceed with:
+
+   <div data-test-output="Listening on http://0.0.0.0:3000">
    ```
    exec bash -l
    export RAILS_DEVELOPMENT_HOSTS='[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com'
    cd example-app &&
      rails server -b 0.0.0.0
-   ```{{execute T2}}
+   ```{{execute T2 test-no-wait}}
+   </div>
+
    * The `-b 0.0.0.0` tells the development servers to accept outside
      connections.  This is necessary in this environment and may be needed
      from within docker containers, but you may want to avoid it when running
@@ -101,9 +105,13 @@ Let's get started with Ruby on Rails:
 
 11. Open the Rails console to see your posts in an interactive
     Ruby environment called the Rails Console:
+
+    <div data-test-output="3.2.2 :001 >">
     ```
     rails console
-    ```{{execute T1}}
+    ```{{execute T1 test-no-wait}}
+    </div>
+
     ```ruby
     Post.all.pluck(:title)
     ```{{execute T1}}
