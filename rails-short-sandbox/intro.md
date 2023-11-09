@@ -3,9 +3,6 @@
 This sandbox provides an environment for you to learn and explore Ruby on
 Rails.
 
-[This is a shortened version of a [Rails Sandbox](https://www.katacoda.com/orm-mcary/scenarios/rails-sandbox).  The longer version continues on to
-generate and explore a Rails scaffold; this one doesn't.]
-
 Rails is a full-stack "batteries-included" framework; it includes all the
 tools needed to build web apps, both on the frontend and backend.  It
 strives to enable developers to write expressive, concise code by following
@@ -15,7 +12,7 @@ default, and scales from "Hello World" to IPO.
 
 Rails is a general-purpose web frame work, so it works well for a building
 a wide variety of types of web applications.  It's a particularly good fit
-for situations where one or more of these apply:
+for one or more of the following situations:
 
 * Your team consists mostly of "full-stack" developers, who can work on
   both the "frontend", with HTML templates and CSS, and on the "backend",
@@ -34,11 +31,6 @@ for situations where one or more of these apply:
 
 * Your application is mostly loading and storing records from and to a
   relational database (RDBMS) such as PostgreSQL or MySQL.
-
-Rails has become quite flexible and can also serve well if:
-
-* You mainly need to build an API to back a separate frontend code base
-* You want a React or other Javascript frontend for your app
 
 #### What are sandboxes?
 

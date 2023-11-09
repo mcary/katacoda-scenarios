@@ -16,6 +16,7 @@ A rails app has already been generated in `./example-app/`.
    ```
    exec bash -l
    export RAILS_DEVELOPMENT_HOSTS='[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com'
+
    cd example-app
    rails server -b 0.0.0.0
    ```{{execute T2 interrupt}}
@@ -31,8 +32,9 @@ A rails app has already been generated in `./example-app/`.
      `ruby` command would not be found.
    -->
 
-   (In many development environments, just a simple `rails console` would
-   suffice.)
+   (In many development environments, it would suffice to run
+   `rails server` without `-b 0.0.0.0` and without setting
+   `RAILS_DEVELOPMENT_HOSTS`.)
 
 2. View your sample web application by clicking the "Your Web App" tab, or
    open [your development server][dev-server] in a new browser tab.
