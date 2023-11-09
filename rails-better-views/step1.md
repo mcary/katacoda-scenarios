@@ -18,7 +18,8 @@ A rails app has already been generated in `./example-app/`.
 
    You should see a placeholder page with a Rails logo.
 
-   Another [link](https://[[HOST_SUBDOMAIN]]-3001-[[KATACODA_HOST]].environments.katacoda.com)
+   <a href="https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com" data-test-contains="Ruby on Rails 7.1">check for Ruby on Rails</a>
+
 
 [dev-server]:https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com
 
