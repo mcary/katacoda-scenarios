@@ -6,15 +6,23 @@ views, but Rails also integrates well with Tailwind and other CSS
 frameworks.
 
 1. Install `bootstrap` rubygem:
-
+   <!-- Report of breaking change with 5.3.2:
+        https://github.com/twbs/bootstrap-rubygem/issues/267 -->
    ```
    bundle add bootstrap -v '~> 5.3.1'
+   bundle add dartsass-sprockets -v '~> 3.0.0'
    ```{{execute T1}}
 
    The `bundle add` command has appended a dependency to the Gemfile:
+   <!-- The additional dependency unfortunately tends to exceed terminal
+        height and cause "less" to stay open.  This is a problem for
+        testing and for anyone who doesn't know how to exit "less".
 
+        Maybe best is to explain how to do it?  Space, q w/ kbd? -->
+   <!-- Breaking this command by placing "--color" after "Gemfile" wasn't
+        caught by the test.  Should we enable pipefail when testing?  -->
    ```
-   git diff Gemfile
+   git diff --color Gemfile | tail
    ```{{execute T1}}
 
 2. Following the installation instructions from the [README
