@@ -63,9 +63,12 @@ frameworks.
    </pre>
 
 6. Restart the server:
+   <!-- How to ensure we don't match the prior occurence of this?? -->
+   <div data-test-output="Listening on http://0.0.0.0:3000">
    ```
    rails server -b 0.0.0.0
-   ```{{execute T2 interrupt}}
+   ```{{execute T2 interrupt test-no-wait}}
+   </div>
 
    Already, you'll see a change on the [Post listing][posts]: the font is
    changed from serif to sans-serif.
