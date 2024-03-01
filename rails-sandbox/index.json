@@ -7,6 +7,8 @@
         "steps": [
             {
                 "title": "Ruby on Rails",
+                "verify": "verify-step1.sh",
+                "solution": "solution-step1.sh",
                 "text": "step1.md"
             }
         ],
