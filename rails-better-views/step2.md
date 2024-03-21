@@ -37,7 +37,7 @@ frameworks.
    `app/assets/stylesheets/application.scss`{{open}} to import the
    `bootstrap` styles:
 
-   <pre class="file" data-filename="xapp/assets/stylesheets/application.scss" data-target="append">
+   <pre class="file" data-filename="app/assets/stylesheets/application.scss" data-target="append">
    // Custom bootstrap variables must be set or imported *before* bootstrap.
    @import "bootstrap";
    </pre>
@@ -86,7 +86,7 @@ frameworks.
    [navbar](https://getbootstrap.com/docs/5.3/components/navbar/) docs:
 
    <!-- Leave extra code indentation to match the target erb file. -->
-   <pre class="file" data-filename="app/views/layouts/application.html.erb" data-target="insert" data-marker="    <%= yield %>">
+   <pre class="file" data-filename="xapp/views/layouts/application.html.erb" data-target="insert" data-marker="    <%= yield %>">
        &lt;nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #eee !important">
          &lt;div class="container">
            &lt;a class="navbar-brand" href="/">Your Logo&lt;/a>
