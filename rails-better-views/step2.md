@@ -37,7 +37,7 @@ frameworks.
    `app/assets/stylesheets/application.scss`{{open}} to import the
    `bootstrap` styles:
 
-   <pre class="file" data-filename="app/assets/stylesheets/application.scss" data-target="append">
+   <pre class="file" data-filename="xapp/assets/stylesheets/application.scss" data-target="append">
    // Custom bootstrap variables must be set or imported *before* bootstrap.
    @import "bootstrap";
    </pre>
