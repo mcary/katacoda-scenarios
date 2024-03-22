@@ -86,7 +86,7 @@ frameworks.
    [navbar](https://getbootstrap.com/docs/5.3/components/navbar/) docs:
 
    <!-- Leave extra code indentation to match the target erb file. -->
-   <pre class="file" data-filename="app/views/layouts/application.html.erb" data-target="insert" data-marker="    <%= xyield %>">
+   <pre class="file" data-filename="app/views/layouts/application.html.erb" data-target="insert" data-marker="    <%= yield %>">
        &lt;nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #eee !important">
          &lt;div class="container">
            &lt;a class="navbar-brand" href="/">Your Logo&lt;/a>
