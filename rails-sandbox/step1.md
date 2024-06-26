@@ -116,6 +116,12 @@ Let's get started with Ruby on Rails:
     Post.all.pluck(:title)
     ```{{execute T1}}
 
+    <div data-test-output="$ ">
+    ```ruby
+    exit()
+    ```{{execute T1 test-no-wait}}
+    </div>
+
 12. Open `app/models/posts.rb`{{open}} to see some code behind that model.
 
 13. Edit templates in `app/views/posts/` to customize the pages shown as
